@@ -1,39 +1,5 @@
-# flake8: noqa
-# type: ignore
-
 import os
-import sys
-
-import django
-
-
-def configure_django_environ(folder):
-    "Configures the django environment based on the location of the manage.py file."
-    manage_py_file = os.path.join(folder, "manage.py")
-    if not os.path.exists(manage_py_file):
-        raise SystemError("Manage.py was not found in the current folder")
-
-    correct_line = next(
-        ((line for line in open(manage_py_file).readlines() if "os.environ.setdefault" in line)),
-        None,
-    )
-
-    if not correct_line:
-        raise SystemError("Could not parse manage.py to find correct django environment.")
-
-    settings_folder = correct_line.strip().replace("os.environ.setdefault('DJANGO_SETTINGS_MODULE', '", "").replace(".settings')", "")
-
-    sys.path.append(folder)
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "%s.settings" % settings_folder)
-
-    try:
-        from django.core.management import execute_from_command_line  # type: ignore noqa
-    except ImportError as exc:
-        raise ImportError(
-            "Couldn't import Django. Are you sure it's installed and " "available on your PYTHONPATH environment variable? Did you " "forget to activate a virtual environment?"
-        ) from exc
-
-    django.setup()
+from typing import Type
 
 
 def find_files(folder: str, extensions=None):
@@ -48,3 +14,20 @@ def find_files(folder: str, extensions=None):
 
 def filename_from_slug(slug: str, extension: str = ".png") -> str:
     return slug.replace("-", "_").replace(" ", "_") + extension
+
+
+def implements(proto: Type):
+    """
+    Credits: https://stackoverflow.com/questions/62922935/python-check-if-class-implements-unrelated-interface
+    Creates a decorator for classes that checks that the decorated class implements the runtime protocol `proto`
+    """
+
+    def _deco(cls_def):
+        try:
+            assert issubclass(cls_def, proto)
+        except AssertionError as e:
+            e.args = (f"{cls_def} does not implement protocol {proto}",)
+            raise
+        return cls_def
+
+    return _deco

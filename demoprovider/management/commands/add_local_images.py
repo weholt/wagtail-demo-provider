@@ -5,7 +5,7 @@ from wagtail.models import Collection
 
 from demoprovider.config import SUPPORTED_IMAGE_FORMATS, get_setting
 from demoprovider.services import ImageService
-from demoprovider.utils import configure_django_environ, find_files
+from demoprovider.utils import find_files
 
 LOCAL_IMAGES_FOLDER = get_setting("LOCAL_IMAGES", os.path.join(os.getcwd(), "LOCAL_IMAGES"))
 
@@ -13,7 +13,6 @@ LOCAL_IMAGES_FOLDER = get_setting("LOCAL_IMAGES", os.path.join(os.getcwd(), "LOC
 @click.command()
 @click.option("--verbose", "-v", is_flag=True, help="Print more output.")
 def add_local_images(verbose: bool = False):
-    configure_django_environ(os.getcwd())
     if not os.path.exists(LOCAL_IMAGES_FOLDER):
         os.makedirs(LOCAL_IMAGES_FOLDER)
 
