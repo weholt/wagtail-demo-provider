@@ -17,6 +17,7 @@ eggs/
 lib/
 lib64/
 parts/
+.env
 sdist/
 var/
 wheels/
@@ -25,6 +26,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+LOCAL_IMAGES
+image-repo
+media
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

@@ -1,0 +1,40 @@
+[project]
+name = "Wagtail Demo Provider"
+version = "0.1"
+dependencies = [
+  "wagtail",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "django-stubs",
+  "ipdb",
+  "pip-tools",
+  "ruff",
+]
+
+[tool.black]
+line-length = 180
+target-version = ['py312']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "django"
+combine_as_imports = true
+include_trailing_comma = true
+line_length = 180
+multi_line_output = 3
+known_first_party = ["config"]
+
+[tool.djlint]
+profile = "django"
+ignore = "H031,T003"
+format_css=true
+max_blank_lines=0
+
+[tool.djlint.css]
+indent_size=5
+
+[project.scripts]
+"manage.py" = "mysite:django_manage"

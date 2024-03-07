@@ -1,0 +1,5 @@
+wagtail
+pyunsplash
+requests
+python-dotenv
+django-click
