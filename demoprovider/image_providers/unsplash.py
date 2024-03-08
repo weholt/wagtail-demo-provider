@@ -11,7 +11,7 @@ from demoprovider.utils import filename_from_slug
 
 logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
 
-TARGET_FOLDER = get_setting("DEMO-PROVIDER-TARGET-FOLDER", os.path.join(os.getcwd(), "image-repo"))
+TARGET_FOLDER = get_setting("DEMO-PROVIDER-TARGET-FOLDER", os.path.join(os.getcwd(), "demo-images"))
 UNSPLASH_ACCESS_KEY = get_setting("UNSPLASH_ACCESS_KEY")
 
 if not UNSPLASH_ACCESS_KEY:

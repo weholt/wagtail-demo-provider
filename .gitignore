@@ -26,8 +26,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-LOCAL_IMAGES
-image-repo
+local-images
+demo-images
 media
 
 # PyInstaller
