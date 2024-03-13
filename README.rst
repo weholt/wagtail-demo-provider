@@ -63,7 +63,7 @@ Important environment variables, can be defined in either .env or settings.py. E
     IMAGE_PROVIDER_DEFAULT_KEYWORDS = portraits, landscape, people, background, profile image, blogging
     IMAGE_PROVIDER_IMAGE_COUNT_PER_KEYWORD = 10
     LOCAL_IMAGES = local-images
-    DEMO-PROVIDER-TARGET-FOLDER=demo-images
+    DEMO_PROVIDER_TARGET-FOLDER=demo-images
 
 Basic Usage
 -----------
