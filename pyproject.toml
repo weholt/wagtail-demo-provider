@@ -36,5 +36,5 @@ max_blank_lines=0
 [tool.djlint.css]
 indent_size=5
 
-[project.scripts]
-"manage.py" = "mysite:django_manage"
+[build-system]
+requires = ["setuptools == 68.2.2"]
