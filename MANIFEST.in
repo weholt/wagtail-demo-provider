@@ -1,4 +1,0 @@
-include LICENSE
-include README.rst
-recursive-include demoprovider/static *
-recursive-include demoprovider/templates *

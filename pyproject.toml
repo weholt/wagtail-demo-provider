@@ -1,3 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "demoprovider"
+dynamic = ["version"]
+description = ''
+readme = "README.rst"
+requires-python = ">=3.12"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Thomas Weholt", email = "thomas@weholt.org" },
+]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 5.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dependencies = [
+  "wagtail"
+]
+
+[project.urls]
+Documentation = "https://github.com/weholt/wagtail-demo-provider#readme"
+Issues = "https://github.com/weholt/wagtail-demo-provider/issues"
+Source = "https://github.com/weholt/wagtail-demo-provider"
+
+[tool.hatch.version]
+path = "src/demoprovider/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/",
+]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.types]
+dependencies = [
+  "mypy>=1.0.0",
+]
+
 [tool.black]
 line-length = 180
 target-version = ['py312']
@@ -19,6 +93,3 @@ max_blank_lines=0
 
 [tool.djlint.css]
 indent_size=5
-
-[build-system]
-requires = ["setuptools == 68.2.2"]
