@@ -1,5 +1,5 @@
 [project]
-name = "Wagtail Demo Provider"
+name = "demo_provider"
 version = "0.1.0"
 dependencies = [
   "wagtail",
