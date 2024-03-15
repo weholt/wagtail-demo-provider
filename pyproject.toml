@@ -47,6 +47,9 @@ include = [
   "src/",
 ]
 
+[tool.hatch.build.targets.wheel]
+sources = ["src"]
+
 [tool.hatch.envs.default]
 dependencies = [
   "coverage[toml]>=6.5",
