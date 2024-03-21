@@ -13,7 +13,8 @@ from wagtail.images import get_image_model
 from wagtail.models import Collection
 
 from .config import SUPPORTED_IMAGE_FORMATS, get_setting
-from .utils import find_files
+from redtoolbox.files import find_files
+
 
 Image = get_image_model()
 TARGET_FOLDER = get_setting("DEMO-PROVIDER-TARGET-FOLDER", os.path.join(os.getcwd(), "demo-images"))
